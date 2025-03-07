@@ -64,7 +64,7 @@ const Careers = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <div className="flex-grow py-20">
+      <div className="flex-grow py-12">
         <div className="container-custom">
           <div className="flex flex-col items-center justify-center mb-12">
             <Briefcase className="w-16 h-16 text-primary mb-6" />
@@ -72,7 +72,7 @@ const Careers = () => {
             <p className="text-lg text-gray-600 text-center max-w-2xl mb-12">
               Explore exciting career opportunities and grow with one of the leading real estate companies in the nation.
             </p>
-            
+
             <div className="bg-gradient-to-r from-[#183152]/10 to-[#B80002]/10 rounded-xl p-8 w-full max-w-6xl mb-12">
               <div className="flex flex-col md:flex-row items-center gap-8">
                 <div className="md:w-1/2">
@@ -115,15 +115,15 @@ const Careers = () => {
                   </Button>
                 </div>
                 <div className="md:w-1/2">
-                  <img 
-                    src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=500&auto=format&fit=crop" 
-                    alt="Team working together" 
+                  <img
+                    src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=500&auto=format&fit=crop"
+                    alt="Team working together"
                     className="rounded-lg w-full h-auto shadow-lg"
                   />
                 </div>
               </div>
             </div>
-            
+
             <h2 className="text-2xl font-bold mb-6">Current Openings</h2>
             <div className="space-y-6 w-full max-w-6xl">
               {jobOpenings.map((job) => (
@@ -135,9 +135,9 @@ const Careers = () => {
                       <span className="bg-primary/10 text-primary text-sm px-3 py-1 rounded-full">{job.type}</span>
                     </div>
                   </div>
-                  
+
                   <p className="text-gray-700 mb-4">{job.description}</p>
-                  
+
                   <div className="mb-4">
                     <h4 className="font-medium mb-2">Requirements:</h4>
                     <ul className="space-y-1 pl-5 list-disc text-gray-700">
@@ -146,10 +146,12 @@ const Careers = () => {
                       ))}
                     </ul>
                   </div>
-                  
-                  <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white">
-                    Apply Now
-                  </Button>
+
+                  <a href='#'>
+                    <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white">
+                      Apply Now
+                    </Button>
+                  </a>
                 </div>
               ))}
             </div>

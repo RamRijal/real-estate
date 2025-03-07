@@ -83,7 +83,7 @@ const BuyProperties = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <div className="flex-grow py-20">
+      <div className="flex-grow py-12">
         <div className="container-custom">
           <div className="flex flex-col items-center justify-center mb-12">
             <Building2 className="w-16 h-16 text-primary mb-6" />

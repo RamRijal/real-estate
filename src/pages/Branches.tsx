@@ -4,30 +4,26 @@ import { MapPin, Clock, Phone, Mail } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
-const BranchCard = ({ name, address, image, hours, phone, email, mapLink }: { 
-  name: string; 
-  address: string; 
-  image: string; 
-  hours: string; 
-  phone: string; 
-  email: string; 
+const BranchCard = ({ name, address, image, hours, phone, email, mapLink }: {
+  name: string;
+  address: string;
+  image: string;
+  hours: string;
+  phone: string;
+  email: string;
   mapLink: string;
 }) => {
   return (
     <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
-      <div className="h-48 overflow-hidden">
-        <img src={image} alt={name} className="w-full h-full object-cover" />
-      </div>
       <div className="p-6">
         <h3 className="text-xl font-bold mb-2">{name}</h3>
-        
         <div className="flex items-start gap-3 mb-3">
           <MapPin className="w-5 h-5 text-primary mt-0.5" />
           <div>
             <p className="text-gray-700">{address}</p>
-            <a 
-              href={mapLink} 
-              target="_blank" 
+            <a
+              href={mapLink}
+              target="_blank"
               rel="noopener noreferrer"
               className="text-primary text-sm hover:underline"
             >
@@ -35,17 +31,16 @@ const BranchCard = ({ name, address, image, hours, phone, email, mapLink }: {
             </a>
           </div>
         </div>
-        
         <div className="flex items-start gap-3 mb-3">
           <Clock className="w-5 h-5 text-primary mt-0.5" />
           <p className="text-gray-700">{hours}</p>
         </div>
-        
+
         <div className="flex items-start gap-3 mb-3">
           <Phone className="w-5 h-5 text-primary mt-0.5" />
           <a href={`tel:${phone}`} className="text-gray-700 hover:text-primary">{phone}</a>
         </div>
-        
+
         <div className="flex items-start gap-3">
           <Mail className="w-5 h-5 text-primary mt-0.5" />
           <a href={`mailto:${email}`} className="text-gray-700 hover:text-primary">{email}</a>
@@ -116,7 +111,7 @@ const Branches = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <div className="flex-grow py-20">
+      <div className="flex-grow py-12">
         <div className="container-custom">
           <div className="flex flex-col items-center justify-center">
             <MapPin className="w-16 h-16 text-primary mb-6" />
@@ -128,7 +123,7 @@ const Branches = () => {
             {/* Branches Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl mb-12">
               {branches.map((branch, index) => (
-                <BranchCard 
+                <BranchCard
                   key={index}
                   name={branch.name}
                   address={branch.address}
@@ -145,16 +140,26 @@ const Branches = () => {
             <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-4xl">
               <h2 className="text-2xl font-bold mb-6 text-center">Our Global Presence</h2>
               <p className="text-gray-600 text-center mb-6">
-                Beyond our local branches, we have a network of partner agencies in major cities worldwide. 
-                Whether you're looking to invest internationally or relocate abroad, we can connect you 
+                Beyond our local branches, we have a network of partner agencies in major cities worldwide.
+                Whether you're looking to invest internationally or relocate abroad, we can connect you
                 with trusted professionals in your destination city.
               </p>
               <div className="flex justify-center">
-                <img 
-                  src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5ce?q=80&w=2033&auto=format&fit=crop&ixlib=rb-4.0.3" 
-                  alt="World Map" 
-                  className="rounded-lg max-h-64 object-cover"
-                />
+                <div className="w-full max-w-6xl">
+                  <div className="bg-white rounded-lg shadow-lg p-4">
+                    <div className="w-full h-96 bg-gray-400 rounded ">
+                      <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.11976397304903!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1614173735669!5m2!1sen!2s"
+                        width="100%"
+                        height="100%"
+                        style={{ border: 0 }}
+                        allowFullScreen={true}
+                        loading="lazy"
+                        title="Office Branches"
+                      ></iframe>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

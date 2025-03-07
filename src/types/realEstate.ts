@@ -1,7 +1,6 @@
+import { Property } from "@/types/property";
 
-import { Property } from '@/types/property';
-
-export type PropertyType = 'buy' | 'rent';
+export type PropertyType = "buy" | "rent";
 
 export interface PropertyFilters {
   location: string;
@@ -10,17 +9,17 @@ export interface PropertyFilters {
   beds: number | null;
   baths: number | null;
   propertyType: PropertyType;
-  quickPrice?: 'low' | 'medium' | 'high' | null;
+  quickPrice?: "low" | "medium" | "high" | null;
 }
 
 // Default filters as a constant export
 export const defaultFilters: PropertyFilters = {
-  location: '',
+  location: "",
   minPrice: 0,
   maxPrice: 1000000,
   beds: null,
   baths: null,
-  propertyType: 'buy',
+  propertyType: "buy",
   quickPrice: null,
 };
 
