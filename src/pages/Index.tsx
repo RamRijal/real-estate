@@ -13,6 +13,8 @@ import AmenitiesSection from '@/components/home/AmenitiesSection';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
 import LatestPropertiesSection from '@/components/home/LatestPropertiesSection';
 import InquirySection from '@/components/home/InquirySection';
+import FAQsSection from '@/components/home/FAQsSection';
+import CTASection from '@/components/home/CTASection';
 
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -38,7 +40,7 @@ const Index = () => {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!searchQuery.trim()) {
       toast({
         title: "Search Error",
@@ -47,7 +49,7 @@ const Index = () => {
       });
       return;
     }
-    
+
     // Set the search in context and navigate to search page
     navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
   };
@@ -85,26 +87,28 @@ const Index = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <div className="flex-grow">
-        <HeroSection 
+        <HeroSection
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
           onSearch={handleSearch}
           onQuickPriceSelect={handleQuickPriceSelect}
         />
         <StatsSection />
-        <ServicesSection onServiceClick={handleServiceClick} />
-        <FeaturedListings 
+        <FeaturedListings
           loading={loading}
           properties={featuredProperties}
           onPropertyClick={handlePropertyClick}
           onViewAllClick={handleViewAllProperties}
         />
-        <LatestPropertiesSection 
+        <LatestPropertiesSection
           properties={properties}
           onPropertyClick={handlePropertyClick}
           onViewAllClick={handleViewAllProperties}
         />
+        <ServicesSection onServiceClick={handleServiceClick} />
         <AmenitiesSection />
+        <CTASection onEnquiryClick={handleInquirySubmit}/>
+        <FAQsSection />
         <TestimonialsSection />
         <InquirySection onInquirySubmit={handleInquirySubmit} />
       </div>

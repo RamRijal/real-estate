@@ -28,7 +28,7 @@ const Contact = () => {
       ...prev,
       [name]: value
     }));
-    
+
     // Clear error when user starts typing
     if (formErrors[name as keyof typeof formErrors]) {
       setFormErrors(prev => ({
@@ -41,12 +41,12 @@ const Contact = () => {
   const validateForm = () => {
     let valid = true;
     const newErrors = { name: '', email: '', message: '' };
-    
+
     if (!formData.name.trim()) {
       newErrors.name = 'Name is required';
       valid = false;
     }
-    
+
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
       valid = false;
@@ -54,19 +54,19 @@ const Contact = () => {
       newErrors.email = 'Email is invalid';
       valid = false;
     }
-    
+
     if (!formData.message.trim()) {
       newErrors.message = 'Message is required';
       valid = false;
     }
-    
+
     setFormErrors(newErrors);
     return valid;
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (validateForm()) {
       contactAgent(formData.name, formData.email, formData.message);
       // Reset form after successful submission
@@ -84,7 +84,7 @@ const Contact = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <div className="flex-grow py-20">
+      <div className="flex-grow py-12">
         <div className="container-custom">
           <div className="flex flex-col items-center justify-center mb-12">
             <Mail className="w-16 h-16 text-primary mb-6" />
@@ -92,13 +92,13 @@ const Contact = () => {
             <p className="text-lg text-gray-600 text-center max-w-2xl mb-12">
               Have questions or need assistance? Reach out to our team and we'll be happy to help.
             </p>
-            
+
             <div className="grid md:grid-cols-5 gap-8 w-full max-w-6xl">
               {/* Contact Info */}
               <div className="md:col-span-2">
                 <div className="bg-white rounded-lg shadow-lg p-8 h-full">
                   <h2 className="text-2xl font-bold mb-6">Get In Touch</h2>
-                  
+
                   <div className="space-y-6">
                     <div className="flex items-start gap-4">
                       <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center shrink-0">
@@ -110,7 +110,7 @@ const Contact = () => {
                         <p className="text-gray-600">(098) 765-4321</p>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-start gap-4">
                       <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center shrink-0">
                         <Mail className="w-5 h-5 text-primary" />
@@ -121,7 +121,7 @@ const Contact = () => {
                         <p className="text-gray-600">sales@realestate.com</p>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-start gap-4">
                       <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center shrink-0">
                         <MapPin className="w-5 h-5 text-primary" />
@@ -133,7 +133,7 @@ const Contact = () => {
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="mt-8">
                     <h3 className="text-lg font-semibold mb-4">Office Hours</h3>
                     <div className="grid grid-cols-2 gap-2">
@@ -147,12 +147,12 @@ const Contact = () => {
                   </div>
                 </div>
               </div>
-              
+
               {/* Contact Form */}
               <div className="md:col-span-3">
                 <div className="bg-white rounded-lg shadow-lg p-8">
                   <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
-                  
+
                   {loading ? (
                     <Loader text="Sending your message..." />
                   ) : (
@@ -172,7 +172,7 @@ const Contact = () => {
                           <p className="text-red-500 text-sm mt-1">{formErrors.name}</p>
                         )}
                       </div>
-                      
+
                       <div>
                         <label htmlFor="email" className="block text-sm font-medium mb-1">
                           Email Address <span className="text-red-500">*</span>
@@ -189,7 +189,7 @@ const Contact = () => {
                           <p className="text-red-500 text-sm mt-1">{formErrors.email}</p>
                         )}
                       </div>
-                      
+
                       <div>
                         <label htmlFor="phone" className="block text-sm font-medium mb-1">
                           Phone Number
@@ -201,7 +201,7 @@ const Contact = () => {
                           onChange={handleChange}
                         />
                       </div>
-                      
+
                       <div>
                         <label htmlFor="message" className="block text-sm font-medium mb-1">
                           Your Message <span className="text-red-500">*</span>
@@ -212,17 +212,16 @@ const Contact = () => {
                           rows={5}
                           value={formData.message}
                           onChange={handleChange}
-                          className={`w-full px-4 py-2 border rounded-md ${
-                            formErrors.message ? "border-red-500" : "border-gray-300"
-                          } focus:outline-none focus:ring-1 focus:ring-primary`}
+                          className={`w-full px-4 py-2 border rounded-md ${formErrors.message ? "border-red-500" : "border-gray-300"
+                            } focus:outline-none focus:ring-1 focus:ring-primary`}
                         ></textarea>
                         {formErrors.message && (
                           <p className="text-red-500 text-sm mt-1">{formErrors.message}</p>
                         )}
                       </div>
-                      
-                      <Button 
-                        type="submit" 
+
+                      <Button
+                        type="submit"
                         className="bg-primary hover:bg-primary/90 w-full"
                         disabled={loading}
                       >
@@ -234,7 +233,7 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Map */}
             <div className="w-full max-w-6xl mt-12">
               <div className="bg-white rounded-lg shadow-lg p-4">

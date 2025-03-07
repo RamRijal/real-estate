@@ -33,14 +33,14 @@ const Navbar = () => {
       href: '/about',
       dropdown: true,
       items: [
-        { label: 'About Us', href: '/about' },
+        { label: 'Our Blog', href: '/blog' },
         { label: 'Our Team', href: '/team' },
         { label: 'Our Branches', href: '/branches' },
-        { label: 'Blog', href: '/blog' },
+        { label: 'About Us', href: '/about' },
         { label: 'Gallery', href: '/gallery' },
         { label: 'Careers', href: '/careers' },
-        { label: 'Contact Us', href: '/contact' },
         { label: 'Terms & Conditions', href: '/terms' },
+        { label: 'Contact Us', href: '/contact' },
       ]
     },
   ];
@@ -79,7 +79,7 @@ const Navbar = () => {
                 <Link
                   key={item.label}
                   to={item.href}
-                  className="text-gray-600 hover:text-[#B80002] transition-colors"
+                    className="text-gray-600 hover:text-[#B80002] active:text-[#B80002] transition-colors"
                 >
                   {item.label}
                 </Link>

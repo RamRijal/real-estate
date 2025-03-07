@@ -19,11 +19,11 @@ const FeaturedListings: React.FC<FeaturedListingsProps> = ({
   onViewAllClick
 }) => {
   return (
-    <section className="py-16 bg-gray-100">
+    <section className="py-16 bg-white">
       <div className="container-custom">
-        <h2 className="text-4xl font-bold text-center mb-4 text-[#183152]">Featured Listings</h2>
+        <h2 className="text-4xl font-bold text-center mb-4 text-[#183152]">Discover Popular Listings</h2>
         <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
-          Explore our handpicked selection of premium properties available right now
+          Explore our handpicked selection of premium properties popular right now
         </p>
 
         {loading ? (

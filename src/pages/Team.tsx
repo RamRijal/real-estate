@@ -77,20 +77,20 @@ const Team = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <div className="flex-grow py-20">
+      <div className="flex-grow py-12">
         <div className="container-custom">
           <div className="flex flex-col items-center justify-center">
             <Users className="w-16 h-16 text-primary mb-6" />
             <h1 className="text-4xl font-bold text-center mb-6">Our Team</h1>
             <p className="text-lg text-gray-600 text-center max-w-2xl mb-12">
-              Meet our talented team of professionals dedicated to helping you find your perfect property. 
+              Meet our talented team of professionals dedicated to helping you find your perfect property.
               With years of experience in the real estate industry, our team provides expert guidance and personalized service.
             </p>
 
             {/* Team Members Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl mb-12">
               {teamMembers.map((member, index) => (
-                <TeamMember 
+                <TeamMember
                   key={index}
                   name={member.name}
                   position={member.position}

@@ -132,7 +132,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 
             {/* Quick links */}
             <div className="flex flex-wrap justify-center gap-4 animate-fade-up" style={{ animationDelay: '600ms' }}>
-              <span className="text-white/80">Popular:</span>
+              <span className="text-white/80">featured:</span>
               <button
                 onClick={() => onQuickPriceSelect('low')}
                 className="text-white hover:text-primary transition-colors"

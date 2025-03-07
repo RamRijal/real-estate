@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
@@ -258,7 +259,7 @@ const blogPosts = [
     slug: 'impact-rising-interest-rates-housing-market',
     excerpt: 'Discover how changing interest rates affect property values and purchasing power in today\'s market.',
     image: 'https://images.unsplash.com/photo-1542144582-1ba00456b5e3?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3',
-      content: `
+    content: `
   <p class="leading-relaxed text-gray-700">
     The integration of smart home technology has transformed from a luxury to an expectation for many home buyers. Strategic implementation of these technologies can not only make your home more attractive to potential buyers but also increase its market value. This guide explores the most valuable smart home upgrades that offer the best return on investment.
   </p>
@@ -566,7 +567,7 @@ const BlogDetails = () => {
     return (
       <div className="min-h-screen flex flex-col">
         <Navbar />
-        <div className="flex-grow flex items-center justify-center py-20">
+        <div className="flex-grow flex items-center justify-center py-12">
           <Loader text="Loading article..." />
         </div>
         <Footer />
@@ -578,7 +579,7 @@ const BlogDetails = () => {
     return (
       <div className="min-h-screen flex flex-col">
         <Navbar />
-        <div className="flex-grow py-20">
+        <div className="flex-grow py-12">
           <div className="container-custom">
             <div className="text-center">
               <h1 className=" font-bold mb-4">Article Not Found</h1>

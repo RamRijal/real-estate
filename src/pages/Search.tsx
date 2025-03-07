@@ -15,19 +15,19 @@ const Search = () => {
   const queryParams = new URLSearchParams(location.search);
   const searchQuery = queryParams.get('q') || '';
   const quickPrice = queryParams.get('price') as 'low' | 'medium' | 'high' | null;
-  
-  const { 
-    filters, 
-    setFilters, 
-    searchProperties, 
-    paginatedProperties, 
-    loading, 
-    currentPage, 
-    setCurrentPage, 
+
+  const {
+    filters,
+    setFilters,
+    searchProperties,
+    paginatedProperties,
+    loading,
+    currentPage,
+    setCurrentPage,
     totalPages,
     propertyType
   } = useRealEstate();
-  
+
   const [showFilters, setShowFilters] = useState(false);
   const [sortOption, setSortOption] = useState('default');
   const [searchTerm, setSearchTerm] = useState(searchQuery);
@@ -38,47 +38,47 @@ const Search = () => {
       location: searchQuery,
       quickPrice: quickPrice || null
     };
-    
+
     setFilters(updatedFilters);
-    
+
     // Perform search with the updated filters
     searchProperties({
       ...filters,
       ...updatedFilters
     });
-    
+
     // Update the search term state
     setSearchTerm(searchQuery);
   }, [searchQuery, quickPrice]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Update URL with new search parameters
     const newParams = new URLSearchParams();
     if (searchTerm) newParams.set('q', searchTerm);
     if (quickPrice) newParams.set('price', quickPrice);
-    
+
     navigate(`/search?${newParams.toString()}`);
   };
 
   const getSortedProperties = () => {
     if (sortOption === 'default') return paginatedProperties;
-    
+
     return [...paginatedProperties].sort((a, b) => {
       const priceA = parseInt(a.price.replace(/[^0-9]/g, ''));
       const priceB = parseInt(b.price.replace(/[^0-9]/g, ''));
-      
+
       if (sortOption === 'price-asc') return priceA - priceB;
       if (sortOption === 'price-desc') return priceB - priceA;
-      
+
       // Sort by number of bedrooms
       if (sortOption === 'beds') {
         const bedsA = parseInt(a.specs.beds);
         const bedsB = parseInt(b.specs.beds);
         return bedsB - bedsA;
       }
-      
+
       return 0;
     });
   };
@@ -106,7 +106,7 @@ const Search = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <div className="flex-grow py-20">
+      <div className="flex-grow py-12">
         <div className="container-custom">
           <div className="flex flex-col items-center justify-center mb-12">
             <SearchIcon className="w-16 h-16 text-primary mb-6" />
@@ -119,21 +119,21 @@ const Search = () => {
               )}
               {quickPrice && (
                 <> with {
-                  quickPrice === 'low' ? 'budget' : 
-                  quickPrice === 'medium' ? 'mid-range' : 
-                  'luxury'
+                  quickPrice === 'low' ? 'budget' :
+                    quickPrice === 'medium' ? 'mid-range' :
+                      'luxury'
                 } pricing</>
               )}
             </p>
-            
+
             {/* Search and filter controls */}
             <div className="w-full max-w-4xl bg-white rounded-lg shadow-lg p-6 mb-12">
               <form onSubmit={handleSearch}>
                 <div className="flex flex-col md:flex-row gap-4 mb-4">
                   <div className="flex-1 relative">
                     <MapPin className="absolute left-3 top-3 text-gray-400" />
-                    <Input 
-                      placeholder="Enter location" 
+                    <Input
+                      placeholder="Enter location"
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
                       className="pl-10 w-full"
@@ -143,9 +143,9 @@ const Search = () => {
                     <SearchIcon className="w-4 h-4 mr-2" />
                     Search
                   </Button>
-                  <Button 
-                    type="button" 
-                    variant="outline" 
+                  <Button
+                    type="button"
+                    variant="outline"
                     onClick={() => setShowFilters(!showFilters)}
                     className="md:w-auto w-full"
                   >
@@ -153,13 +153,13 @@ const Search = () => {
                     Filters
                   </Button>
                 </div>
-                
+
                 {showFilters && (
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 animate-fade-up">
                     <div>
                       <label className="block text-sm font-medium mb-1">Min Price</label>
-                      <Input 
-                        type="number" 
+                      <Input
+                        type="number"
                         placeholder="Min price"
                         value={filters.minPrice === 0 ? '' : filters.minPrice}
                         onChange={(e) => setFilters({ minPrice: Number(e.target.value) || 0 })}
@@ -167,8 +167,8 @@ const Search = () => {
                     </div>
                     <div>
                       <label className="block text-sm font-medium mb-1">Max Price</label>
-                      <Input 
-                        type="number" 
+                      <Input
+                        type="number"
                         placeholder="Max price"
                         value={filters.maxPrice === 0 ? '' : filters.maxPrice}
                         onChange={(e) => setFilters({ maxPrice: Number(e.target.value) || 0 })}
@@ -176,7 +176,7 @@ const Search = () => {
                     </div>
                     <div>
                       <label className="block text-sm font-medium mb-1">Sort By</label>
-                      <select 
+                      <select
                         className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
                         value={sortOption}
                         onChange={(e) => setSortOption(e.target.value)}
@@ -191,7 +191,7 @@ const Search = () => {
                 )}
               </form>
             </div>
-            
+
             {/* Loading state */}
             {loading ? (
               <Loader text="Searching properties..." />
@@ -207,7 +207,7 @@ const Search = () => {
                   </p>
                   <div className="flex items-center gap-2">
                     <span className="text-sm text-gray-500">Sort:</span>
-                    <select 
+                    <select
                       className="px-2 py-1 border border-gray-300 rounded-md text-sm"
                       value={sortOption}
                       onChange={(e) => setSortOption(e.target.value)}
@@ -225,8 +225,8 @@ const Search = () => {
                   <div className="w-full max-w-6xl bg-white rounded-lg shadow p-8 text-center">
                     <h3 className="text-xl font-semibold mb-2">No properties found</h3>
                     <p className="text-gray-600 mb-4">Try adjusting your search criteria</p>
-                    <Button 
-                      variant="outline" 
+                    <Button
+                      variant="outline"
                       onClick={() => {
                         setFilters({
                           location: '',
@@ -285,7 +285,7 @@ const Search = () => {
                                 <span>{property.specs.sqft} Sq Ft</span>
                               </div>
                             </div>
-                            <Button 
+                            <Button
                               className="w-full mt-4 bg-primary hover:bg-primary/90"
                               onClick={() => navigate(`/properties/${property.id}`)}
                             >
@@ -308,7 +308,7 @@ const Search = () => {
                           <ChevronLeft className="h-4 w-4" />
                           Previous
                         </Button>
-                        
+
                         <div className="flex gap-1">
                           {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                             <Button
@@ -321,7 +321,7 @@ const Search = () => {
                             </Button>
                           ))}
                         </div>
-                        
+
                         <Button
                           variant="outline"
                           onClick={handleNextPage}

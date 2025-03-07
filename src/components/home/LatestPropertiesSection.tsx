@@ -10,8 +10,8 @@ interface LatestPropertiesSectionProps {
   onPropertyClick: (id: string) => void;
 }
 
-const LatestPropertiesSection: React.FC<LatestPropertiesSectionProps> = ({ 
-  properties, 
+const LatestPropertiesSection: React.FC<LatestPropertiesSectionProps> = ({
+  properties,
   onViewAllClick,
   onPropertyClick
 }) => {
@@ -26,13 +26,13 @@ const LatestPropertiesSection: React.FC<LatestPropertiesSectionProps> = ({
       <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1920&auto=format&fit=crop')] bg-cover bg-center">
         <div className="absolute inset-0 bg-[#B80002] bg-opacity-90"></div>
       </div>
-      
+
       <div className="container-custom relative z-10">
         <h2 className="text-4xl font-bold text-center mb-4 text-white">Latest Properties</h2>
         <p className="text-center text-gray-200 mb-12 max-w-2xl mx-auto">
           Discover our most recently added properties and be the first to find your perfect home
         </p>
-        
+
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {latestProperties.map((property, index) => (
             <div
@@ -63,7 +63,7 @@ const LatestPropertiesSection: React.FC<LatestPropertiesSectionProps> = ({
                   <span>{property.specs.baths} Baths</span>
                   <span>{property.specs.sqft} Sq Ft</span>
                 </div>
-                <Button 
+                <Button
                   className="w-full mt-4 bg-[#B80002] hover:bg-[#B80002]/90"
                   onClick={(e) => {
                     e.stopPropagation();
@@ -76,10 +76,10 @@ const LatestPropertiesSection: React.FC<LatestPropertiesSectionProps> = ({
             </div>
           ))}
         </div>
-        
+
         <div className="text-center mt-10">
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             className="text-[#B80002] border-[#B80002] hover:bg-[#B80002] hover:text-white"
             onClick={onViewAllClick}
           >

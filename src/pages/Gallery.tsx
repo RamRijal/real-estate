@@ -7,14 +7,14 @@ import Footer from '@/components/Footer';
 
 const GalleryImage = ({ src, alt, onClick }: { src: string; alt: string; onClick: () => void }) => {
   return (
-    <div 
+    <div
       className="overflow-hidden rounded-lg cursor-pointer group"
       onClick={onClick}
     >
-      <img 
-        src={src} 
-        alt={alt} 
-        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+      <img
+        src={src}
+        alt={alt}
+        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
       />
     </div>
   );
@@ -50,7 +50,7 @@ const Gallery = () => {
       category: 'interiors'
     },
     {
-      src: 'https://images.unsplash.com/photo-1600585154526-990dced4db3d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3',
+      src: 'https://images.unsplash.com/photo-1560185007-cde436f6a4d0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3',
       alt: 'Luxury Bedroom',
       category: 'interiors'
     },
@@ -80,7 +80,7 @@ const Gallery = () => {
       category: 'amenities'
     },
     {
-      src: 'https://images.unsplash.com/photo-1594484208280-efa31f96f3d4?q=80&w=2376&auto=format&fit=crop&ixlib=rb-4.0.3',
+      src: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3',
       alt: 'Home Office',
       category: 'interiors'
     },
@@ -96,27 +96,27 @@ const Gallery = () => {
     }
   ];
 
-  const filteredImages = activeCategory === 'all' 
-    ? images 
+  const filteredImages = activeCategory === 'all'
+    ? images
     : images.filter(img => img.category === activeCategory);
 
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <div className="flex-grow py-20">
+      <div className="flex-grow py-12">
         <div className="container-custom">
           <div className="flex flex-col items-center justify-center">
             <Image className="w-16 h-16 text-primary mb-6" />
             <h1 className="text-4xl font-bold text-center mb-6">Our Gallery</h1>
             <p className="text-lg text-gray-600 text-center max-w-2xl mb-12">
-              Browse through our collection of stunning properties, interior designs, and real estate events. 
+              Browse through our collection of stunning properties, interior designs, and real estate events.
               Get inspired by our portfolio of premium real estate offerings.
             </p>
 
             {/* Category Filters */}
             <div className="flex flex-wrap justify-center gap-3 mb-10">
               {categories.map(category => (
-                <Button 
+                <Button
                   key={category.id}
                   variant={activeCategory === category.id ? "default" : "outline"}
                   className={activeCategory === category.id ? "bg-primary" : ""}
@@ -130,7 +130,7 @@ const Gallery = () => {
             {/* Gallery Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full max-w-6xl mb-8">
               {filteredImages.map((image, index) => (
-                <GalleryImage 
+                <GalleryImage
                   key={index}
                   src={image.src}
                   alt={image.alt}
@@ -143,15 +143,15 @@ const Gallery = () => {
             {selectedImage && (
               <div className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4">
                 <div className="relative max-w-4xl max-h-screen">
-                  <button 
+                  <button
                     className="absolute top-4 right-4 bg-white rounded-full p-2 text-black"
                     onClick={() => setSelectedImage(null)}
                   >
                     <X className="w-6 h-6" />
                   </button>
-                  <img 
-                    src={selectedImage} 
-                    alt="Full size" 
+                  <img
+                    src={selectedImage}
+                    alt="Full size"
                     className="max-w-full max-h-[85vh] rounded-lg"
                   />
                 </div>
