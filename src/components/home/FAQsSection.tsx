@@ -31,14 +31,14 @@ const FAQsSection = () => {
 
     return (
         <section className="py-16 bg-white">
-            <div className="hidden md:block container-custom">
-                <h2 className="text-3xl font-bold text-center mb-8 text-[#183152]">Frequently Asked Questions</h2>
+            <div className=" md:block container-custom">
+                <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 text-[#183152]">Frequently Asked Questions</h2>
                 <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
                     Find answers to common questions about buying, selling, and renting properties
                 </p>
 
                 <div className="grid md:grid-cols-2 gap-8 items-center">
-                    <div className="relative h-[500px] rounded-lg overflow-hidden shadow-xl ">
+                    <div className="hidden md:block relative h-[500px] rounded-lg overflow-hidden shadow-xl ">
                         <img
                             src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1920&auto=format&fit=crop"
                             alt="Modern home interior"

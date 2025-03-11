@@ -28,7 +28,7 @@ const LatestPropertiesSection: React.FC<LatestPropertiesSectionProps> = ({
       </div>
 
       <div className="container-custom relative z-10">
-        <h2 className="text-4xl font-bold text-center mb-4 text-white">Latest Properties</h2>
+        <h2 className="text-3xl md:text-4xl text-center font-bold mb-4 text-white">Latest Properties</h2>
         <p className="text-center text-gray-200 mb-12 max-w-2xl mx-auto">
           Discover our most recently added properties and be the first to find your perfect home
         </p>

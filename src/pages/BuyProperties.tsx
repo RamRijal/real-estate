@@ -163,8 +163,8 @@ const BuyProperties = () => {
             ) : (
               <>
                 {/* Property count */}
-                <div className="w-full max-w-6xl flex justify-between items-center mb-6">
-                  <p className="text-gray-600">
+                <div className="w-full max-w-6xl flex-col md:flex justify-between items-center mb-6">
+                  <p className="text-gray-600 mb-2">
                     Showing <span className="font-semibold">{paginatedProperties.length}</span> properties
                     {totalPages > 1 && (
                       <span> (Page {currentPage} of {totalPages})</span>

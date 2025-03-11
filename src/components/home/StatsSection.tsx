@@ -18,7 +18,7 @@ const StatItem: React.FC<StatItemProps> = ({ value, label, icon, index }) => (
     <div className="text-[#B80002] mb-3">
       {icon}
     </div>
-    <p className='text-5xl font-bold'><Counter className="text-5xl font-bold text-[#183152] mb-2" from={0} to={value} />+</p>
+    <p className='md:text-5xl font-bold text-4xl '><Counter className="text-4xl md:text-5xl font-bold text-[#183152] mb-2" from={0} to={value} />+</p>
     <div className="text-[#B80002] mt-2">{label}</div>
   </div>
 );
