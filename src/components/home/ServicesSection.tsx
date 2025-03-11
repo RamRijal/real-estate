@@ -32,7 +32,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ onServiceClick }) => 
   return (
     <section className="py-16 bg-white">
       <div className="container-custom">
-        <h2 className="text-4xl font-bold text-center mb-8 text-[#183152]">Our Main Services</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8 text-[#183152]">Our Main Services</h2>
         <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
           We help you navigate the complex real estate market with expert guidance and personalized service at every step.
         </p>

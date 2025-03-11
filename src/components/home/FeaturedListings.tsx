@@ -21,8 +21,8 @@ const FeaturedListings: React.FC<FeaturedListingsProps> = ({
   return (
     <section className="py-16 bg-white">
       <div className="container-custom">
-        <h2 className="text-4xl font-bold text-center mb-4 text-[#183152]">Discover Popular Listings</h2>
-        <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
+        <h2 className="text-3xl md:text-4xl text-center font-bold mb-4 text-[#183152]">Discover Popular Listings</h2>
+        <p className="text-center  text-base text-gray-600 max-w-2xl mx-auto mb-12">
           Explore our handpicked selection of premium properties popular right now
         </p>
 

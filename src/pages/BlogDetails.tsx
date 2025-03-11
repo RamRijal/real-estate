@@ -627,12 +627,12 @@ const BlogDetails = () => {
                   <span className="bg-primary px-3 py-1 rounded-full text-sm font-medium">
                     {post.category}
                   </span>
-                  <span className="flex items-center text-sm">
+                  <span className="flex items-center text-xs md:text-sm">
                     <Calendar className="w-4 h-4  mr-1" />
                     {post.date}
                   </span>
                   {post.readTime && (
-                    <span className='text-sm'>{post.readTime}</span>
+                    <span className='text-xs md:text-sm'>{post.readTime}</span>
                   )}
                 </div>
                 <h1 className="text-3xl md:text-5xl font-bold mb-6">{post.title}</h1>

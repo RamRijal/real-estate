@@ -1,9 +1,8 @@
-
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import {
   MapPin, BedDouble, Bath, SquareCode, Check, Clock, ArrowLeft,
-  Phone, Mail, Award, Camera, Home, Star, MapIcon, ChevronLeft, ChevronRight
+  Phone, Mail, Award, Camera, Home, Star, MapIcon, ChevronLeft, ChevronRight, X
 } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -25,6 +24,8 @@ const ListingDetails = () => {
   const [submitting, setSubmitting] = useState(false);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [similarProperties, setSimilarProperties] = useState<any[]>([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalImage, setModalImage] = useState('');
 
   // Mock property details for demonstration
   const mockPropertyDetails = {
@@ -119,6 +120,16 @@ const ListingDetails = () => {
     );
   };
 
+  const handleImageClick = (image: string) => {
+    setModalImage(image);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setModalImage('');
+  };
+
   if (loading || !property) {
     return (
       <div className="min-h-screen flex flex-col">
@@ -164,7 +175,7 @@ const ListingDetails = () => {
               className="w-full h-full object-cover opacity-40"
             />
           </div>
-          <div className="container-custom relative z-10 text-center">
+          <div className="container-custom relative z-10 text-center pt-12 md:pt-0">
             <div className="bg-white/10 backdrop-blur-sm p-8 rounded-lg inline-block">
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{property.title}</h1>
               <div className="flex items-center justify-center mb-4">
@@ -177,7 +188,7 @@ const ListingDetails = () => {
           <Button
             onClick={() => navigate(-1)}
             variant="outline"
-            className="absolute top-8 left-8 bg-white/20 backdrop-blur-sm text-white hover:bg-white hover:text-[#183152]"
+            className="absolute top-4 left-4 md:top-8 md:left-8 z-50 bg-white/20 backdrop-blur-sm text-white hover:bg-white hover:text-[#183152]"
           >
             <ArrowLeft className="mr-2 h-4 w-4" /> Back
           </Button>
@@ -190,13 +201,13 @@ const ListingDetails = () => {
               {/* Main Content */}
               <div className="md:col-span-2">
                 {/* Photo Gallery */}
-                <div className="bg-gray-100 p-8 rounded-lg mb-10">
-                  <div className="flex items-center justify-between mb-6">
-                    <h2 className="text-2xl font-bold text-[#183152]">Photo Gallery</h2>
+                <div className="bg-gray-100 p-4 md:p-8 rounded-lg mb-10">
+                  <div className="flex flex-col md:flex  justify-between mb-6">
+                    <h2 className="text-2xl font-bold text-[#183152] mb-2">Photo Gallery</h2>
                     <Button
                       variant="outline"
                       size="sm"
-                      className="flex items-center gap-1 text-[#183152]"
+                      className="flex w-fit items-center gap-1 text-[#183152]"
                     >
                       <Camera className="w-4 h-4" />
                       <span>View All Photos</span>
@@ -207,7 +218,8 @@ const ListingDetails = () => {
                     <img
                       src={property.images[activeImageIndex]}
                       alt={`Property view ${activeImageIndex + 1}`}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover cursor-pointer hover:cursor-zoom-in"
+                      onClick={() => handleImageClick(property.images[activeImageIndex])}
                     />
                     <Button
                       variant="outline"
@@ -243,7 +255,7 @@ const ListingDetails = () => {
                         key={index}
                         className={`h-20 rounded-md overflow-hidden cursor-pointer transition-all ${activeImageIndex === index ? 'ring-2 ring-[#B80002]' : 'opacity-70 hover:opacity-100'
                           }`}
-                        onClick={() => setActiveImageIndex(index)}
+                        onClick={() => handleImageClick(img)}
                       >
                         <img src={img} alt={`Thumbnail ${index + 1}`} className="w-full h-full object-cover" />
                       </div>
@@ -254,7 +266,7 @@ const ListingDetails = () => {
                 {/* Overview */}
                 <div className="bg-gray-100 p-8 rounded-lg mb-10">
                   <h2 className="text-2xl font-bold mb-6 text-[#183152]">Overview</h2>
-                  <div className="grid grid-cols-3 gap-6 mb-6">
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-6">
                     <div className="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm">
                       <BedDouble className="w-8 h-8 text-[#183152] mb-2" />
                       <span className="text-lg font-semibold">{property.specs.beds} Beds</span>
@@ -276,11 +288,13 @@ const ListingDetails = () => {
                 {/* Property Highlights */}
                 <div className="bg-gray-100 p-8 rounded-lg mb-10">
                   <h2 className="text-2xl font-bold mb-6 text-[#183152]">Property Highlights</h2>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2  md:gap-4">
                     {property.highlights.map((highlight: string, index: number) => (
-                      <div key={index} className="flex items-center">
-                        <Star className="w-5 h-5 text-[#B80002] mr-2" />
-                        <span className="text-gray-700">{highlight}</span>
+                      <div key={index} className="flex items-center text-left">
+                        <div className="">
+                          <Star className="w-5 h-5  text-[#B80002] mr-4" />
+                        </div>
+                        <span className="text-gray-700 text-left">{highlight}</span>
                       </div>
                     ))}
                   </div>
@@ -292,7 +306,9 @@ const ListingDetails = () => {
                   <div className="grid grid-cols-2 gap-4">
                     {property.amenities.map((amenity: string, index: number) => (
                       <div key={index} className="flex items-center">
-                        <Check className="w-5 h-5 text-[#B80002] mr-2" />
+                        <div className="">
+                          <Check className="w-5 h-5 text-[#B80002] mr-2" />
+                        </div>
                         <span className="text-gray-700">{amenity}</span>
                       </div>
                     ))}
@@ -450,6 +466,23 @@ const ListingDetails = () => {
         </section>
       </div>
       <Footer />
+
+      {/* Image Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
+          <div className="relative max-w-4xl w-full">
+            <Button
+              variant="outline"
+              size="icon"
+              className="absolute top-2 right-2 bg-white/80 hover:bg-white"
+              onClick={closeModal}
+            >
+              <X className="h-4 w-4" />
+            </Button>
+            <img src={modalImage} alt="Zoomed" className="w-full h-auto rounded-lg" />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
